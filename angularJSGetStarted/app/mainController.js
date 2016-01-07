@@ -6,14 +6,14 @@
 
     function mainController($scope, $http, $interval,$log,$anchorScroll,$location) {
 
-        var onUserComplete = function (response) {
+        var onUserComplete = function (response) {        
             $scope.user = response.data;
             $http.get($scope.user.repos_url)
-              .then(onRepos, onError);
+                .then(onRepos, onError);
         };
 
         var onRepos = function (response) {
-            $scope.repos = response.data;
+            $scope.repos = response.data;            
             $location.hash("userDetails");
             $anchorScroll();
         };
@@ -37,7 +37,7 @@
         $scope.search = function (username) {
             $log.info("Searching for " + username);
             $http.get("https://api.github.com/users/" + username)
-              .then(onUserComplete, onError);
+                .then(onUserComplete, onError);
             if (countdownInterval) {
                 $interval.cancel(countdownInterval);
                 $scope.countdown = null;
