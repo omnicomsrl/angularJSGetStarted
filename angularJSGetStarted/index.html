@@ -4,22 +4,33 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <meta charset="utf-8" />
-    <script src="Scripts/angular.min.js"></script>
-    <script src="app/appGitHubViewer.module.js"></script>
-    <script src="app/mainController.js"></script>
+    <script src="appGitHubViewer.module.js"></script>
+    <script src="main.controller.js"></script>
+    <script src="scripts/angular.min.js"></script>
 </head>
-<body ng-controller="Main">
-    <h1>{{message}}</h1>
-    <div>
-        {{error}}
-    </div>
+<!--<body>
+    <h1>GitHub Viewer</h1>
+    <div ng-view></div>
+</body>-->
 
-    {{countdown}}
-    <form name="searchUser" ng-submit="search(username)">
-        <input type="search" required placeholder="Nome da cercare" ng-model="username" />
-        <input type="submit" value="search" />
-    </form>
-    <!--<button ng-click="$log.log(message)">log</button>-->   
-    <div ng-include="'userDetails.html'" ng-show="user"></div>
-</body>
+<!-- evitare -->
+<!--<body ng-controller="Main">-->
+<!--h1>{{message}}</h1>-->
+
+    <!-- consigliato -->
+    <body ng-controller="MainController">
+        <h1>{{message}}</h1>
+        <div>
+            {{error}}
+        </div>
+
+        {{countdown}}
+
+        <form name="searchUser" ng-submit="search(username)">
+            <input type="search" required placeholder="Nome da cercare" ng-model="username" />
+            <input type="submit" value="search" />
+        </form>
+        <!--<button ng-click="$log.log(message)">log</button>-->
+        <div ng-include="'userDetails.html'" ng-show="user"></div>
+    </body>
 </html>
