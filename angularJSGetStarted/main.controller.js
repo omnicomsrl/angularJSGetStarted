@@ -1,10 +1,78 @@
 ﻿(function () {
 
+    /* 
+    //
+    // Usa funzioni che hanno un nome piuttosto che passare una funzione anonima come in una callback
+    // evitare
+    //
+    angular
+        .module('app')        
+        .factory('logger', function() { });
+    //
+    // consigliato    
+    //
+    // logger.js
+    //
+    angular
+        .module('app')
+        .factory('logger', logger);
+
+    function logger() { }
+
+    //
+    // evitare
+    //
+    var app = angular.module('app', [
+        'ngAnimate',
+        'ngRoute',
+        'app.shared',
+        'app.dashboard'
+    ]);
+
+    //
+    // consigliato
+    //
+    angular
+          .module('app', [
+            'ngAnimate',
+            'ngRoute',
+            'app.shared',
+            'app.dashboard'
+          ]);
+
+    //
+    // evitare 
+    //
+    var app = angular.module('app');
+    app.controller('SomeController', SomeController);
+
+    function SomeController() { }
+
+    //
+    // consigliato
+    //
+    angular
+        .module('app')
+        .controller('SomeController', SomeController);
+
+    function SomeController() { }
+    
+    //
+    // consigliato
+    //
+    // per creare un modulo
+    angular.module('app', []);
+
+    // per recuperare un modulo
+    angular.module('app');
+
+    */
     angular
         .module('appGitHubViewer')
-          .controller('Main', ['$scope', '$http','$interval','$log','$anchorScroll','$location', mainController]);
+          .controller('MainController', ['$scope', '$http','$interval','$log','$anchorScroll','$location', mainController]);
 
     function mainController($scope, $http, $interval,$log,$anchorScroll,$location) {
+        'use strict';
 
         var onUserComplete = function (response) {        
             $scope.user = response.data;
